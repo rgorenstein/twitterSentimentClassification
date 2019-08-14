@@ -79,3 +79,7 @@ for x in range(0,len(index)):
 
 embed_time,W_df = saveEmbed(content_list)
 W_df.to_pickle('embedding.pkl')
+
+f = open('embed_time.txt','w')
+f.write(f'{embed_time}')
+f.close()
