@@ -257,7 +257,6 @@ def ns_max(dists):
 """must define (X_train, y_train) or (X_train_s, y_train_s) and variables needed for find_k_nearest before calling next function""" 
   
 def test_accuracy(n_predictions, k, small=False, agg=False):
-  accuracies = []
   if small:
     strain = sX_train_s
   else:
