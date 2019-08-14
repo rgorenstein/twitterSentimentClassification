@@ -264,23 +264,21 @@ def test_accuracy(n_predictions, k, small=False, agg=False):
   results = []
   if agg:
     for z in range(n_predictions):
-      qT, qL, qi = get_query(agg=True)
       if small:
-        result_ixs, result_dists = find_k_nearest(qT, qL, qi, wT_s, y_train_s, k, strain, agg=True)
-        results.append(qL - np.floor(np.dot(ns_max(result_dists), y_train_s[result_ixs])+0.5)==0)
+        result_ixs, result_dists = find_k_nearest(X2a_test[z], ya_test[z], z, wT_s, y_train_s, k, strain, agg=True)
+        results.append(ya_test[z] - np.floor(np.dot(ns_max(result_dists), y_train_s[result_ixs])+0.5)==0)
       else:
-        result_ixs, result_dists = find_k_nearest(qT, qL, qi, wT, y_train, k, strain, agg=True)
-        results.append(qL - np.floor(np.dot(ns_max(result_dists), y_train[result_ixs])+0.5)==0)
+        result_ixs, result_dists = find_k_nearest(X2a_test[z], ya_test[z], z, wT, y_train, k, strain, agg=True)
+        results.append(ya_test[z] - np.floor(np.dot(ns_max(result_dists), y_train[result_ixs])+0.5)==0)
     return sum(results)/n_predictions
   else:
     for z in range(n_predictions):
-      qT, qL, qi = get_query(agg=False)
       if small:
-        result_ixs, result_dists = find_k_nearest(qT, qL, qi, wT_s, y_train_s, k, strain, agg=False)
-        results.append(qL - np.floor(np.dot(ns_max(result_dists), y_train_s[result_ixs])+0.5)==0)
+        result_ixs, result_dists = find_k_nearest(X2na_test[z], yna_test[z], z, wT_s, y_train_s, k, strain, agg=False)
+        results.append(yna_test[z] - np.floor(np.dot(ns_max(result_dists), y_train_s[result_ixs])+0.5)==0)
       else:
-        result_ixs, result_dists = find_k_nearest(qT, qL, qi, wT, y_train, k, strain, agg=False)
-        results.append(qL - np.floor(np.dot(ns_max(result_dists), y_train[result_ixs])+0.5)==0)
+        result_ixs, result_dists = find_k_nearest(X2na_test[z], yna_test[z], z, wT, y_train, k, strain, agg=False)
+        results.append(yna_test[z] - np.floor(np.dot(ns_max(result_dists), y_train[result_ixs])+0.5)==0)
     return sum(results)/n_predictions
 
 """# Load Data"""
