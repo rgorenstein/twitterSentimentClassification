@@ -418,5 +418,5 @@ full_time = end-start
 """# Print Results"""
 
 f = open('tweetSentimentClassification_results.txt','w')
-f.write(f'Number of Test Tweets: {len(test_list)} \nEmbedding dimension: {W_embedding.shape[1]} \nVocabulary size: {W_embedding.shape[0]} \nEmbedding time: {embed_time} \nNumber of Predictions: {n_pred_a} \nAccuracy calculations took {acc_time} to compute. \nAccuracy for non aggressive tweets: {na_acc} \nAccuracy for aggressive tweets: {a_acc} \nTotal runtime: {full_time}')
+f.write(f'Number of Test Tweets: {len(test_list)} \nEmbedding dimension: {W_embedding.shape[1]} \nVocabulary size: {W_embedding.shape[0]} \nEmbedding time: {embed_time} \nNumber of Aggressive Tweets: {n_pred_a} \nNumber of Non-Aggressive Tweets: {n_pred_na} \nAccuracy calculations took {acc_time} to compute. \nAccuracy for non aggressive tweets: {na_acc} \nAccuracy for aggressive tweets: {a_acc} \nTotal runtime: {full_time}')
 f.close()
